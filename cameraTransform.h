@@ -7,26 +7,41 @@
 */
 
 # include <iostream>
-# include <vector>
+# include <eigen3/Eigen/Dense>
 
 using namespace std;
+using namespace Eigen;
+
+# define M_PI 3.14159265358979323846
+# define ToRadian(X) ((X)*M_PI/180.0)
+# define ToDegree(X) ((X)*180.0/M_PI)
+# define cm2pixel(X) ((X)/0.026458333)
+# define pixel2cm(X) ((X)*0.026458333)
+# define SC_WIDTH 640.0
+# define SC_HEIGHT 480.0
 
 class CameraTrans {
     private :
         double nearZ, farZ;
         double verFOV; // Should be in radian
-        vector<double> zAxis, yAxis, xAxis; // Get data from forward kinematics
-        Matrix<double, 4, 4> viewMat, orientationMat;
+        double aspectRat;
+        double trans;
+        Vector3d zAxis, yAxis, xAxis; // Get data from forward kinematics
+        Matrix<double, 4, 4> persProjectMat, translationMat, rotationMat, scaleMat, transformMat;
     public :
-        CameraTrans();
+        CameraTrans(int opt);
         ~CameraTrans();
 
         double GetNearZ();
         double GetFarZ();
         double GetVerFOV();
-        vector<double> GetZAxis();
-        vector<double> GetYAxis();
-        vector<double> GetXAxis();
+        Vector3d GetZAxis();
+        Vector3d GetYAxis();
+        Vector3d GetXAxis();
+        Matrix<double, 4, 4> GetPersProj() {return persProjectMat;};
+        Matrix<double, 4, 4> GetTransMat() {return transformMat;};
+        Matrix<double, 4, 4> GetRotMat() {return rotationMat;};
+        Matrix<double, 4, 4> GetTranslationMat() {return translationMat;};
 
         void SetNearZ(double val);
         void SetFarZ(double val);
@@ -35,10 +50,16 @@ class CameraTrans {
         void SetYAxis(double i, double j, double k);
         void SetXAxis(double i, double j, double k);
 
-        vector<double> CalculateXAxis(); // Calculate using the cross product of Y and Z axis
+        Vector3d cross();
+        void AxisSetup();
+        void Normalize(int axis);
 
-        void CreateViewMatrix(); // Should be of matrix type
-        void CreateOrientationMatrix(); // Should be of matrix type
+        void CreatePersProjMat();
+        void CreateTranslationMat(double v1, double v2, double v3);
+        void CreateRotationMat();
+        void CreateScaleMat(double kx, double ky, double kz);
+        void CreateTransformMat();
+        void Process(Vector4d *vertices, int size);
 
         Matrix<double, 3, 1> ThreeD2TwoD(Matrix<double, 4, 1> point);
 };
