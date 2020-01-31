@@ -1,0 +1,7 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/jonet/Documents/Project/ros_vision/devel/lib/python2.7/dist-packages",
+        "/home/jonet/Documents/Project/daho_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/melodic/lib/python2.7/dist-packages"
+    ]
+}

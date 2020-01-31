@@ -1,0 +1,12 @@
+\subsubsection usage Usage
+\verbatim
+<node name="daho_vision" pkg="daho_vision" type="daho_vision">
+  <param name="minH" type="int" value="30" />
+  <param name="minS" type="int" value="63" />
+  <param name="minV" type="int" value="87" />
+  <param name="maxH" type="int" value="54" />
+  <param name="maxS" type="int" value="185" />
+  <param name="maxV" type="int" value="196" />
+</node>
+\endverbatim
+

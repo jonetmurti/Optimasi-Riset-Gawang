@@ -1,0 +1,8 @@
+prefix=/home/jonet/Documents/Project/ros_vision/devel
+
+Name: daho_vision
+Description: Description of daho_vision
+Version: 0.0.0
+Cflags: -I/home/jonet/Documents/Project/ros_vision/devel/include
+Libs: -L/home/jonet/Documents/Project/ros_vision/devel/lib 
+Requires: message_runtime

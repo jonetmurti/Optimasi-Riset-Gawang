@@ -1,0 +1,22 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~minB" : \b [int] minB Color Filter Tiang min: 0, default: 0, max: 255
+- \b "~maxB" : \b [int] maxB Color Filter Tiang min: 0, default: 255, max: 255
+- \b "~minG" : \b [int] minG Color Filter Tiang min: 0, default: 0, max: 255
+- \b "~maxG" : \b [int] maxG Color Filter Tiang min: 0, default: 255, max: 255
+- \b "~minR" : \b [int] minR Color Filter Tiang min: 0, default: 0, max: 255
+- \b "~maxR" : \b [int] maxR Color Filter Tiang min: 0, default: 255, max: 255
+- \b "~yCrop" : \b [int] Nilai y untuk batas vision min: 0, default: 0, max: 255
+- \b "~sigma" : \b [int] sigma Hough Transform min: 0, default: 8, max: 255
+- \b "~tetha" : \b [int] tetha Hough Transform min: 0, default: 0, max: 255
+- \b "~lambd" : \b [int] lambd Hough Transform min: 0, default: 3, max: 255
+- \b "~gamma" : \b [int] gamma Hough Transform min: 0, default: 0, max: 255
+- \b "~minFieldRatio" : \b [int] Rasio minimal banyak lapangan di sekitar tiang bagian bawah min: 0, default: 0, max: 100
+- \b "~maxFieldRatio" : \b [int] Rasio maksimal banyak lapangan di sekitar tiang bagian bawah min: 0, default: 100, max: 100
+- \b "~minFieldAtasR" : \b [int] Rasio minimal banyak lapangan di sekitar tiang bagian atas min: 0, default: 0, max: 100
+- \b "~maxFieldAtasR" : \b [int] Rasio maksimal banyak lapangan di sekitar tiang bagian atas min: 0, default: 100, max: 100
+- \b "~minVarian" : \b [int] Variansi terkecil jika terdeteksi lebih dari 2 tiang min: 0, default: 0, max: 255
+- \b "~maxVarian" : \b [int] Variansi terbesar jika terdeteksi lebih dari 2 tiang min: 0, default: 0, max: 255
+

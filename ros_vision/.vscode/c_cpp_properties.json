@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/jonet/Documents/Project/ros_vision/devel/include/**",
+                "/home/jonet/Documents/Project/daho_ws/devel/include/**",
+                "/opt/ros/melodic/include/**",
+                "/home/jonet/Documents/Project/daho_ws/src/daho_controller/include/**",
+                "/home/jonet/Documents/Project/daho_ws/src/daho_forward_kinematics/include/**",
+                "/home/jonet/Documents/Project/ros_vision/src/daho_vision/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

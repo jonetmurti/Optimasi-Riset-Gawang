@@ -10,7 +10,7 @@ CameraTrans::CameraTrans(int opt) {
         xAxis << 1, 0, 0;
         yAxis << 0, 1, 0;
         zAxis << 0, 0, 1;
-        trans = -2.5;
+        trans = 0;
     } else if (opt == 1) {
         xAxis << 1, 0, 0;
         yAxis << 0, 1/sqrt(2), 1/sqrt(2);

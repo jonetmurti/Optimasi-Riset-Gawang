@@ -1,0 +1,22 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~min_Y" : \b [int] min_Y Color Filter Bola min: 0, default: 0, max: 255
+- \b "~max_Y" : \b [int] max_Y Color Filter Bola min: 0, default: 12, max: 255
+- \b "~min_U" : \b [int] min_U Color Filter Bola min: 0, default: 117, max: 255
+- \b "~max_U" : \b [int] max_U Color Filter Bola min: 0, default: 195, max: 255
+- \b "~min_V" : \b [int] min_V Color Filter Bola min: 0, default: 199, max: 255
+- \b "~max_V" : \b [int] max_V Color Filter Bola min: 0, default: 255, max: 255
+- \b "~min_dist" : \b [int] Jarak minimal antar lingkaran min: 0, default: 4, max: 50
+- \b "~upper_threshold" : \b [int] Param 1 Hough Circle min: 0, default: 61, max: 100
+- \b "~center_threshold" : \b [int] Param 2 Hough Circle min: 0, default: 45, max: 100
+- \b "~min_r" : \b [int] Radius minimal yang diterima min: 0, default: 90, max: 400
+- \b "~max_r" : \b [int] Radius maksimal yang diterima min: 0, default: 209, max: 400
+- \b "~countErode" : \b [int] Banyak melakukan erosi min: 0, default: 0, max: 5
+- \b "~epsBoundRC" : \b [int] Epsilon Rectangle-Cirlce min: 0, default: 40, max: 100
+- \b "~epsBoundEC" : \b [int] Epsilon Ellipse-Circle min: 0, default: 45, max: 100
+- \b "~epsFieldCheck" : \b [int] Epsilon cek lapangan min: 0, default: 16, max: 100
+- \b "~minRContour" : \b [int] Radius minimal contour min: 0, default: 0, max: 100
+- \b "~maxRContour" : \b [int] Radius maksimal contour min: 0, default: 640, max: 640
+

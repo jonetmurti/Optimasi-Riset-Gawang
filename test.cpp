@@ -28,50 +28,68 @@ int main () {
     axis[2].y = origin.y - SC_HEIGHT/2;
     axis[3].x = origin.x;
     axis[3].y = origin.y + SC_HEIGHT/2;
-    //line(pict1, axis[0], axis[1], Scalar(255, 255, 255), 2, 8, 0);
-    //line(pict1, axis[2], axis[3], Scalar(255, 255, 255), 2, 8, 0);
+    line(pict1, axis[0], axis[1], Scalar(255, 255, 255), 1, 8, 0);
+    line(pict1, axis[2], axis[3], Scalar(255, 255, 255), 1, 8, 0);
 
-    //line(pict2, axis[0], axis[1], Scalar(255, 255, 255), 2, 8, 0);
-    //line(pict2, axis[2], axis[3], Scalar(255, 255, 255), 2, 8, 0);
+    line(pict2, axis[0], axis[1], Scalar(255, 255, 255), 2, 8, 0);
+    line(pict2, axis[2], axis[3], Scalar(255, 255, 255), 2, 8, 0);
 
     Vector4d first[8];
     Vector4d second[8];
+    
+    Matrix<double, 4, 4> rotZ;
+    rotZ << cos(ToRadian(45)), (-1)*sin(ToRadian(45)), 0, 0,
+            sin(ToRadian(45)), cos(ToRadian(45)), 0, 0,
+            0, 0, 1, 0,
+            0, 0, 0, 1;
 
-    first[0] << 0, 5, 12, 1;
-    first[1] << 5/sqrt(2), 5, 12+5/sqrt(2), 1;
-    first[2] << 0, 5, (5*sqrt(2) + 12), 1;
-    first[3] << (-1)*5/sqrt(2), 5, 12+5/sqrt(2), 1;
-    first[4] << 0, 0, 12, 1;
-    first[5] << 5/sqrt(2), 0, 12+5/sqrt(2), 1;
-    first[6] << 0, 0, (5*sqrt(2) + 12), 1;
-    first[7] << (-1)*5/sqrt(2), 0, 12+5/sqrt(2), 1;
+    first[0] << 0, 5 - 2.5, 12, 1;
+    first[1] << 5/sqrt(2), 5 - 2.5, 12+5/sqrt(2), 1;
+    first[2] << 0, 5 - 2.5, (5*sqrt(2) + 12), 1;
+    first[3] << (-1)*5/sqrt(2), 5 - 2.5, 12+5/sqrt(2), 1;
+    first[4] << 0, 0 - 2.5, 12, 1;
+    first[5] << 5/sqrt(2), 0 - 2.5, 12+5/sqrt(2), 1;
+    first[6] << 0, 0 - 2.5, (5*sqrt(2) + 12), 1;
+    first[7] << (-1)*5/sqrt(2), 0 - 2.5, 12+5/sqrt(2), 1;
 
-    second[0] << 0, 5, 12, 1;
-    second[1] << 5/sqrt(2), 5, 12+5/sqrt(2), 1;
-    second[2] << 0, 5, (5*sqrt(2) + 12), 1;
-    second[3] << (-1)*5/sqrt(2), 5, 12+5/sqrt(2), 1;
-    second[4] << 0, 0, 12, 1;
-    second[5] << 5/sqrt(2), 0, 12+5/sqrt(2), 1;
-    second[6] << 0, 0, (5*sqrt(2) + 12), 1;
-    second[7] << (-1)*5/sqrt(2), 0, 12+5/sqrt(2), 1;
+   /*
+   first[0] << -1, 2, 14, 1;
+   first[1] << -4, 4, 16, 1;
+   first[2] << 0.5, 1, 13, 1;
+   first[3] << 1.25, 0.5, 12.5, 1;
+    */
+
+    second[0] << 0, 5 - 2.5, 12, 1;
+    second[1] << 5/sqrt(2), 5 - 2.5, 12+5/sqrt(2), 1;
+    second[2] << 0, 5 - 2.5, (5*sqrt(2) + 12), 1;
+    second[3] << (-1)*5/sqrt(2), 5 - 2.5, 12+5/sqrt(2), 1;
+    second[4] << 0, 0 - 2.5, 12, 1;
+    second[5] << 5/sqrt(2), 0 - 2.5, 12+5/sqrt(2), 1;
+    second[6] << 0, 0 - 2.5, (5*sqrt(2) + 12), 1;
+    second[7] << (-1)*5/sqrt(2), 0 - 2.5, 12+5/sqrt(2), 1;
+
+    for (int i = 0; i < 8; i++) {
+        first[i] = rotZ * first[i];
+        second[i] = rotZ * second[i];
+    }
 
     cam1.Process(first, 8);
     cam2.Process(second, 8);
 
     for (int i = 0; i < 8; i++) {
-        first[i](0) *= ar * 2;
-        second[i](0) *= ar * 2;
-        first[i](1) *= 2;
-        second[i](1) *= 2;
+        first[i](0) *= ar * 4;
+        second[i](0) *= ar * 4;
+        first[i](1) *= 4;
+        second[i](1) *= 4;
     }
 
     Point vertices1[8];
     Point vertices2[8];
 
     for (int i = 0; i < 8; i++) {
-        vertices1[i].x = origin.x + cm2pixel(first[i](0));
+        vertices1[i].x = origin.x - cm2pixel(first[i](0));
         vertices1[i].y = origin.y - cm2pixel(first[i](1));
-        vertices2[i].x = origin.x + cm2pixel(second[i](0));
+        vertices2[i].x = origin.x - cm2pixel(second[i](0));
         vertices2[i].y = origin.y - cm2pixel(second[i](1));
         cout << i + 1 << endl;
         cout << vertices1[i] << endl;
@@ -166,6 +184,7 @@ int main () {
         i += 1;
     }
     */
+   
    line(pict1, vertices1[0], vertices1[1], Scalar(255,255,255), 2, 8, 0);
    line(pict1, vertices1[0], vertices1[3], Scalar(255,255,255), 2, 8, 0);
    line(pict1, vertices1[0], vertices1[4], Scalar(255,255,255), 2, 8, 0);
@@ -176,24 +195,24 @@ int main () {
 
     
     line(pict2, vertices2[0], vertices2[1], Scalar(255,255,255), 2, 8, 0);
+    line(pict2, vertices2[2], vertices2[3], Scalar(255,255,255), 2, 8, 0);
     line(pict2, vertices2[0], vertices2[3], Scalar(255,255,255), 2, 8, 0);
     line(pict2, vertices2[1], vertices2[2], Scalar(255,255,255), 2, 8, 0);
-    line(pict2, vertices2[2], vertices2[3], Scalar(255,255,255), 2, 8, 0);
     line(pict2, vertices2[0], vertices2[4], Scalar(255,255,255), 2, 8, 0);
     line(pict2, vertices2[4], vertices2[5], Scalar(255,255,255), 2, 8, 0);
+    line(pict2, vertices2[5], vertices2[6], Scalar(255,255,255), 2, 8, 0);
+    line(pict2, vertices2[6], vertices2[7], Scalar(255,255,255), 2, 8, 0);
     line(pict2, vertices2[4], vertices2[7], Scalar(255,255,255), 2, 8, 0);
     line(pict2, vertices2[1], vertices2[5], Scalar(255,255,255), 2, 8, 0);
     line(pict2, vertices2[3], vertices2[7], Scalar(255,255,255), 2, 8, 0);
+    line(pict2, vertices2[2], vertices2[6], Scalar(255,255,255), 2, 8, 0);
     
    /*
-    circle(pict2, vertices2[0], 2, Scalar(255,255,255), 2, 8, 0);
-    circle(pict2, vertices2[1], 2, Scalar(255,255,255), 2, 8, 0);
-    circle(pict2, vertices2[2], 2, Scalar(255,255,255), 2, 8, 0);
-    circle(pict2, vertices2[3], 2, Scalar(255,255,255), 2, 8, 0);
-    circle(pict2, vertices2[4], 2, Scalar(255,255,255), 2, 8, 0);
-    circle(pict2, vertices2[5], 2, Scalar(255,255,255), 2, 8, 0);
-    circle(pict2, vertices2[7], 2, Scalar(255,255,255), 2, 8, 0);
-    */
+    circle(pict1, vertices1[0], 2, Scalar(255,255,255), 2, 8, 0);
+    circle(pict1, vertices1[1], 2, Scalar(255,255,255), 2, 8, 0);
+    circle(pict1, vertices1[2], 2, Scalar(255,255,255), 2, 8, 0);
+    circle(pict1, vertices1[3], 2, Scalar(255,255,255), 2, 8, 0);
+    */ 
 
     cout << cam1.GetTranslationMat() << endl;
     cout << cam1.GetRotMat() << endl;

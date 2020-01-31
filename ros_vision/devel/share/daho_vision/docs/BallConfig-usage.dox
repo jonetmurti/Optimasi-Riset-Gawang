@@ -1,0 +1,23 @@
+\subsubsection usage Usage
+\verbatim
+<node name="daho_vision" pkg="daho_vision" type="daho_vision">
+  <param name="min_Y" type="int" value="0" />
+  <param name="max_Y" type="int" value="12" />
+  <param name="min_U" type="int" value="117" />
+  <param name="max_U" type="int" value="195" />
+  <param name="min_V" type="int" value="199" />
+  <param name="max_V" type="int" value="255" />
+  <param name="min_dist" type="int" value="4" />
+  <param name="upper_threshold" type="int" value="61" />
+  <param name="center_threshold" type="int" value="45" />
+  <param name="min_r" type="int" value="90" />
+  <param name="max_r" type="int" value="209" />
+  <param name="countErode" type="int" value="0" />
+  <param name="epsBoundRC" type="int" value="40" />
+  <param name="epsBoundEC" type="int" value="45" />
+  <param name="epsFieldCheck" type="int" value="16" />
+  <param name="minRContour" type="int" value="0" />
+  <param name="maxRContour" type="int" value="640" />
+</node>
+\endverbatim
+

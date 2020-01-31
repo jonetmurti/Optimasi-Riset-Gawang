@@ -1,0 +1,7 @@
+<launch>
+    <node name="capture" pkg="cv_camera" type="cv_camera_node" />
+    <node name="field_detection" pkg="daho_vision" type="field_detection" />
+    <node name="ball_detection" pkg="daho_vision" type="ball_detection" />
+    <node name="goal_post_detection" pkg="daho_vision" type="goal_post_detection" output="screen"/>
+    <node name="config" pkg="rqt_reconfigure" type="rqt_reconfigure"/>
+</launch>

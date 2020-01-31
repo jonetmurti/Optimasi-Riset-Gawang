@@ -1,0 +1,11 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~minH" : \b [int] minH Color Filter Lapangan min: 0, default: 30, max: 255
+- \b "~minS" : \b [int] minS Color Filter Lapangan min: 0, default: 63, max: 255
+- \b "~minV" : \b [int] minV Color Filter Lapangan min: 0, default: 87, max: 255
+- \b "~maxH" : \b [int] maxH Color Filter Lapangan min: 0, default: 54, max: 255
+- \b "~maxS" : \b [int] maxS Color Filter Lapangan min: 0, default: 185, max: 255
+- \b "~maxV" : \b [int] maxV Color Filter Lapangan min: 0, default: 196, max: 255
+
