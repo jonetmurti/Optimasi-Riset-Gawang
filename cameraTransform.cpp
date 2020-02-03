@@ -2,8 +2,8 @@
 # include <math.h>
 
 CameraTrans::CameraTrans(int opt) {
-    nearZ = 10;
-    farZ = 20;
+    nearZ = 400;
+    farZ = 700;
     verFOV = ToRadian(78);
     aspectRat = SC_WIDTH/SC_HEIGHT;
     if (opt == 0) {
@@ -141,14 +141,14 @@ void CameraTrans::CreateTransformMat() {
     transformMat = persProjectMat * rotationMat * translationMat * scaleMat;
 }
 
-void CameraTrans::Process(Vector4d *vertices, int size) {
+void CameraTrans::Process(vector<Vector4d> &vertices) {
     //AxisSetup();
     CreateScaleMat(1, 1, 1);
     CreateTranslationMat(0, this->trans, 0); //Sesuaikan dengan tinggi robot
     CreateRotationMat();
     CreatePersProjMat();
     CreateTransformMat();
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < vertices.size(); i++) {
         vertices[i] = transformMat*vertices[i];
         vertices[i](0) /= vertices[i](3);
         vertices[i](1) /= vertices[i](3);

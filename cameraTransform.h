@@ -7,6 +7,7 @@
 */
 
 # include <iostream>
+# include <vector>
 # include <eigen3/Eigen/Dense>
 
 using namespace std;
@@ -59,7 +60,7 @@ class CameraTrans {
         void CreateRotationMat();
         void CreateScaleMat(double kx, double ky, double kz);
         void CreateTransformMat();
-        void Process(Vector4d *vertices, int size);
+        void Process(vector<Vector4d> &vertices);
 
         Matrix<double, 3, 1> ThreeD2TwoD(Matrix<double, 4, 1> point);
 };
