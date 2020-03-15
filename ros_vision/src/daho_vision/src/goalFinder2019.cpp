@@ -407,6 +407,7 @@ void GoalPerceptor::process(Mat m, Mat field)
 {
     ROS_INFO("Starting Process!\n");
     //----------------------------Camera Process---------------------------------------
+    // TODO 1 : Create a camera thread here until ENDOFTHREAD
     vector<Vector4d> temp;
     Vector3d verticeVector;
     double norm = sqrt(pow(cam1.GetZAxis()(0), 2) + pow(cam1.GetZAxis()(2), 2));
@@ -423,6 +424,7 @@ void GoalPerceptor::process(Mat m, Mat field)
     }
     ROS_INFO("HELLO\n");
     cam1.Process(temp);
+    // ENDOFTHREAD
     //----------------------------End of camera process--------------------------------
     cvtColor(field, field, COLOR_BGR2GRAY);
     //Image Processing
@@ -466,9 +468,11 @@ void GoalPerceptor::process(Mat m, Mat field)
     xGoalPost.clear();
     cArea.clear();
     totalAreaContour = 0;
+    // TODO 2 : Join the Camera Thread
     for (vector<Point> c : contours)
     {
         RotatedRect boundRect = minAreaRect(c);
+        // TODO 3 : multithread antara cek tiang dengan cek lapangan
         if (tiangValid(boundRect, temp, hasil))
         {
             //Cek lapangan
